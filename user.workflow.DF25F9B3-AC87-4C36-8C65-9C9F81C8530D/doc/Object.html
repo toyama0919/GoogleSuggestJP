@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class Object - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>workflow.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">BasicObject
+  
+</nav>
+
+    <!-- Included Modules -->
+<nav id="includes-section" class="section">
+  <h3 class="section-header">Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><span class="include">REXML</span>
+  
+  
+  </ul>
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li ><a href="#method-i-get_filefilter">#get_filefilter</a>
+    
+    <li ><a href="#method-i-get_suggestion_words">#get_suggestion_words</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Object.html">Object</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Object</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="API_URL">API_URL
+        
+        <dd class="description"><p>URL of Google Suggest API</p>
+        
+      
+        <dt id="SUGGEST_URL">SUGGEST_URL
+        
+        <dd class="description"><p>URL of google</p>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-get_filefilter" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_filefilter</span><span
+            class="method-args">(word_list)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>This method make filefilter xml using suggest words. Return data format is
+as follow.</p>
+
+<pre>&lt;items&gt;
+  &lt;item uid=&quot;|word|&quot; arg=&quot;|word|&quot; valid=&quot;yes&quot; autocomplete=&quot;&quot;&gt;
+    &lt;title&gt;|word|&lt;/title&gt;
+    &lt;subtitle&gt;Googleで「|word|」を検索します。&lt;/subtitle&gt;
+    &lt;icon&gt;icon.png&lt;/icon&gt;
+  &lt;item&gt;
+&lt;/items&gt;</pre>
+<dl class="rdoc-list note-list"><dt><em>word_list</em> 
+<dd>
+<p>suggestion words</p>
+</dd><dt>return 
+<dd>
+<p>string data of filefilter xml.</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="get_filefilter-source">
+            <pre><span class="ruby-comment"># File workflow.rb, line 62</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_filefilter</span> <span class="ruby-identifier">word_list</span>
+        <span class="ruby-identifier">xml</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-identifier">xml</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">XMLDecl</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;1.0&quot;</span>, <span class="ruby-string">&quot;UTF-8&quot;</span>)
+
+        <span class="ruby-identifier">tag_items</span> = <span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;items&quot;</span>)
+        <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">add_element</span>(<span class="ruby-identifier">tag_items</span>)
+
+        <span class="ruby-identifier">word_list</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">word</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">tag_item</span>     = <span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;item&quot;</span>)
+                <span class="ruby-identifier">tag_title</span>    = <span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;title&quot;</span>)
+                <span class="ruby-identifier">tag_subtitle</span> = <span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;subtitle&quot;</span>)
+                <span class="ruby-identifier">tag_icon</span>     = <span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;icon&quot;</span>)
+
+                <span class="ruby-comment"># Settings for item</span>
+                <span class="ruby-identifier">tag_item</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">&quot;uid&quot;</span>] = <span class="ruby-identifier">word</span>
+                <span class="ruby-identifier">tag_item</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">&quot;arg&quot;</span>] = <span class="ruby-identifier">word</span>
+                <span class="ruby-identifier">tag_item</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">&quot;valid&quot;</span>] = <span class="ruby-string">&quot;yes&quot;</span>
+                <span class="ruby-identifier">tag_item</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">&quot;autocomplete&quot;</span>] = <span class="ruby-string">&quot;&quot;</span>
+
+                <span class="ruby-comment"># Settings for title</span>
+                <span class="ruby-identifier">tag_title</span>.<span class="ruby-identifier">text</span> = <span class="ruby-identifier">word</span>
+
+                <span class="ruby-comment"># Settins for subtitle</span>
+                <span class="ruby-identifier">tag_subtitle</span>.<span class="ruby-identifier">text</span> = <span class="ruby-string">&quot;Googleで「&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">word</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;」を検索します。&quot;</span>
+
+                <span class="ruby-comment"># Settings for icon</span>
+                <span class="ruby-identifier">tag_icon</span>.<span class="ruby-identifier">text</span> = <span class="ruby-string">&quot;icon.png&quot;</span>
+
+                <span class="ruby-identifier">tag_item</span>.<span class="ruby-identifier">add_element</span>(<span class="ruby-identifier">tag_title</span>)
+                <span class="ruby-identifier">tag_item</span>.<span class="ruby-identifier">add_element</span>(<span class="ruby-identifier">tag_subtitle</span>)
+                <span class="ruby-identifier">tag_item</span>.<span class="ruby-identifier">add_element</span>(<span class="ruby-identifier">tag_icon</span>)
+                <span class="ruby-identifier">tag_items</span>.<span class="ruby-identifier">add_element</span>(<span class="ruby-identifier">tag_item</span>)
+        }
+
+        <span class="ruby-identifier">xml</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_filefilter-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_filefilter-method -->
+
+    
+      <div id="method-i-get_suggestion_words" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_suggestion_words</span><span
+            class="method-args">(query)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Get to suggetion words using Google Suggest API. This method dones as
+follow.</p>
+
+<pre>1. Get xml data from Google Suggest API.
+2. Parse xml data.</pre>
+<dl class="rdoc-list note-list"><dt><em>query</em> 
+<dd>
+<p>query string</p>
+</dd><dt>return 
+<dd>
+<p>suggestion words</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="get_suggestion_words-source">
+            <pre><span class="ruby-comment"># File workflow.rb, line 28</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_suggestion_words</span> <span class="ruby-identifier">query</span>
+        <span class="ruby-identifier">array</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-identifier">res_xml</span> = <span class="ruby-keyword">nil</span>
+
+        <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>.<span class="ruby-identifier">version_1_2</span>
+        <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>.<span class="ruby-identifier">start</span>(<span class="ruby-constant">SUGGEST_URL</span>, <span class="ruby-value">80</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">http</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">res_xml</span> = <span class="ruby-identifier">http</span>.<span class="ruby-identifier">get</span>(<span class="ruby-constant">API_URL</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">query</span>).<span class="ruby-identifier">body</span>.<span class="ruby-identifier">toutf8</span>
+        }
+
+        <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">res_xml</span>).<span class="ruby-identifier">elements</span>.<span class="ruby-identifier">each</span>(<span class="ruby-string">&#39;toplevel/CompleteSuggestion/&#39;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">e1</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">e1</span>.<span class="ruby-identifier">elements</span>.<span class="ruby-identifier">each</span>(<span class="ruby-string">&#39;suggestion&#39;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">e2</span><span class="ruby-operator">|</span>
+                        <span class="ruby-identifier">array</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">e2</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;data&#39;</span>])
+                }
+        }
+
+        <span class="ruby-identifier">array</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_suggestion_words-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_suggestion_words-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

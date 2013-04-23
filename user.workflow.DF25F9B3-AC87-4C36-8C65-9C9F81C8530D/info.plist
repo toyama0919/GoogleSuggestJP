@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.sbkro.gsuggestjp</string>
+	<key>connections</key>
+	<dict>
+		<key>D5EE6D36-8197-4836-A1E3-6948C412881A</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>188F24EA-8A3D-42B4-A627-92280BF55860</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>sbkro</string>
+	<key>description</key>
+	<string>Google Suggest for Japanese</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Google Suggest JP</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>36</integer>
+				<key>keyword</key>
+				<string>g</string>
+				<key>script</key>
+				<string>require 'workflow'
+
+word_list = get_suggestion_words "{query}"
+puts get_filefilter word_list</string>
+				<key>title</key>
+				<string>Googleを検索</string>
+				<key>type</key>
+				<integer>2</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>D5EE6D36-8197-4836-A1E3-6948C412881A</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>searcher</key>
+				<integer>1635215215</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.systemwebsearch</string>
+			<key>uid</key>
+			<string>188F24EA-8A3D-42B4-A627-92280BF55860</string>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Google Suggest for Japanese
+
+*****
+
+Googleサジェストの日本語APIを利用したWorkflowです。</string>
+	<key>uidata</key>
+	<dict>
+		<key>188F24EA-8A3D-42B4-A627-92280BF55860</key>
+		<dict>
+			<key>ypos</key>
+			<real>150</real>
+		</dict>
+		<key>D5EE6D36-8197-4836-A1E3-6948C412881A</key>
+		<dict>
+			<key>ypos</key>
+			<real>140</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>https://github.com/sbkro</string>
+</dict>
+</plist>
